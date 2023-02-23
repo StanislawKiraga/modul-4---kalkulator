@@ -21,15 +21,15 @@ def sum(x, y):
     print(f'Wynik to: {result}')
 
 def difr(x, y):
-    result = num1 - num2
+    result = x - y
     print(f'Wynik to: {result}')
 
 def iloczyn(x, y):
-    result = num1 * num2
+    result = x * y
     print(f'Wynik to: {result}')
 
 def iloraz(x, y):
-    result = num1 / num2
+    result = x / y
     print(f'Wynik to: {result}')
 
 if choice == 1:
