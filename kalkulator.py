@@ -1,49 +1,48 @@
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
-choice = int(input('''
-Podaj działanie jakie chcesz wykonać, wybierając odpowiednią liczbę:
+def sum(x, y):
+    return x + y
+
+def difr(x, y):
+    return x - y
+
+def iloczyn(x, y):
+    return x * y
+
+def iloraz(x, y):
+    return x / y
+
+def get_data():
+    choice = int(input('Twój wybór: '))
+    if choice < 1 or choice > 4:
+        logging.warning('Nieprawidłowy wybór')
+        exit(1)
+    x = float(input('Podaj pierwszą wartość: '))
+    y = float(input('Podaj drugą wartość: '))
+
+    if choice == 1:
+        logging.info(f'Dodaję {x} + {y}')
+        print(f'Wynik to: {sum(x, y)}')
+    elif choice == 2:
+        logging.info(f'Odejmuję {x} - {y}')
+        print(f'Wynik to {difr(x, y)}')
+    elif choice == 3:
+        logging.info(f'Mnozę {x} * {y}')
+        print(f'Wynik to {iloczyn(x, y)}')
+    elif choice == 4:
+        logging.info(f'Dzielę {x} / {y}')
+        print(f'Wynik to {iloraz(x, y)}')
+
+def calculator():
+    logging.info('''
+Podaj działanie, które chcesz wykonać, wybierając odpowiednią liczbę:
 1. Dodawanie
 2. Odejmowanie
 3. Mnozenie
-4. Dzielenie
-Twój wybór: '''))
+4. Dzielenie''')
+    get_data()  
 
-if choice < 1 or choice > 4:
-    logging.error('Wybór nieprawidłowy')
-    exit(1)
+if __name__ == "__main__":
+    calculator()
 
-num1 = float(input('Podaj pierwszą wartość: '))
-num2 = float(input('Podaj drugą wartość: '))
-
-def sum(x, y):
-    result = x + y
-    print(f'Wynik to: {result}')
-
-def difr(x, y):
-    result = x - y
-    print(f'Wynik to: {result}')
-
-def iloczyn(x, y):
-    result = x * y
-    print(f'Wynik to: {result}')
-
-def iloraz(x, y):
-    result = x / y
-    print(f'Wynik to: {result}')
-
-if choice == 1:
-    logging.info(f'Dodaję {num1} + {num2}')
-    sum(num1, num2)
-    
-if choice == 2:    
-    logging.info(f'Odejmuję {num1} - {num2}')
-    difr(num1, num2)
-    
-if choice == 3:    
-    logging.info(f'Mnozę {num1} * {num2}')
-    iloczyn(num1, num2)
-
-if choice == 4:    
-    logging.info(f'Dzielę {num1} / {num2}')
-    iloraz(num1, num2)
