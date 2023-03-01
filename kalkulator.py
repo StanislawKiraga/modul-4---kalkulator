@@ -1,48 +1,48 @@
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
-def sum(x, y):
+def add(x, y):
+    logging.info(f'Dodaję: {x} + {y}')
     return x + y
 
-def difr(x, y):
+def subtract(x, y):
+    logging.info(f'Odejmuję: {x} - {y}')
     return x - y
 
-def iloczyn(x, y):
+def multiple(x, y):
+    logging.info(f'Mnozę: {x} * {y}')
     return x * y
 
-def iloraz(x, y):
+def divide(x, y):
+    logging.info(f'Dzielę: {x} / {y}')
     return x / y
 
 def get_data():
-    choice = int(input('Twój wybór: '))
-    if choice < 1 or choice > 4:
+    choice = str(input('Twój wybór: '))
+    if choice not in ('1,2,3,4'):
         logging.warning('Nieprawidłowy wybór')
         exit(1)
-    x = float(input('Podaj pierwszą wartość: '))
-    y = float(input('Podaj drugą wartość: '))
+    x = int(input('Podaj pierwszą wartość:'))   
+    y = int(input('Podaj drugą wartośc:'))
+    return choice, x, y
 
-    if choice == 1:
-        logging.info(f'Dodaję {x} + {y}')
-        print(f'Wynik to: {sum(x, y)}')
-    elif choice == 2:
-        logging.info(f'Odejmuję {x} - {y}')
-        print(f'Wynik to {difr(x, y)}')
-    elif choice == 3:
-        logging.info(f'Mnozę {x} * {y}')
-        print(f'Wynik to {iloczyn(x, y)}')
-    elif choice == 4:
-        logging.info(f'Dzielę {x} / {y}')
-        print(f'Wynik to {iloraz(x, y)}')
+operations = {
+    '1': add,
+    '2': subtract,
+    '3': multiple,
+    '4': divide
+}
 
-def calculator():
+def calculate():
+    choice, x, y = get_data()
+    result = operations[choice](x, y)    
+    print(f'Wynik to {result}')
+
+if __name__ == "__main__":
     logging.info('''
-Podaj działanie, które chcesz wykonać, wybierając odpowiednią liczbę:
+Jaką operację chcesz wykonać? Podaj odpowiednią liczbę:
 1. Dodawanie
 2. Odejmowanie
 3. Mnozenie
 4. Dzielenie''')
-    get_data()  
-
-if __name__ == "__main__":
-    calculator()
-
+    calculate()
